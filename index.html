@@ -188,9 +188,9 @@ const MOCK_USERS = [
             };
             
             if (isSmall) {
-                 parentDiv.classList.add('bg-transparent');
-                 parentDiv.innerHTML = `<span class="text-white ${textSizeClass}">${profile.profile}</span>`;
-                 return;
+                  parentDiv.classList.add('bg-transparent');
+                  parentDiv.innerHTML = `<span class="text-white ${textSizeClass}">${profile.profile}</span>`;
+                  return;
             }
 
             parentDiv.style.backgroundColor = colorMap[colorClass] || '#ccc'; 
@@ -527,7 +527,7 @@ const MOCK_USERS = [
                                             className="w-full object-cover" 
                                             onError={(e) => {e.target.style.display='none';}}
                                         />
-                                         <button
+                                        <button
                                             type="button"
                                             onClick={() => setImageUrl('')}
                                             className="absolute top-2 right-2 p-1 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition"
@@ -1228,7 +1228,7 @@ const MOCK_USERS = [
                             className="w-full object-cover" 
                             onError={(e) => {e.target.style.display='none';}}
                         />
-                         <button
+                        <button
                             type="button"
                             onClick={() => setImageUrl('')}
                             className="absolute top-2 right-2 p-1 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-75 transition"
@@ -1245,7 +1245,7 @@ const MOCK_USERS = [
 const RecursiveReplies = ({ parentId, allPostProps, posts, postsWithChildren }) => {
     const childReplies = useMemo(() => 
         posts.filter(p => p.replyToId === parentId)
-             .sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime()),
+              .sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime()),
         [parentId, posts]
     );
 
@@ -1305,13 +1305,13 @@ const ExpandableReply = ({ reply, index, replies, allPostProps, posts, postsWith
                             <span className="text-gray-400 dark:text-gray-600 text-lg leading-none"></span> {/* 점선 대신 빈 공간 */}
                         </div>
                         <span className="text-sm font-semibold text-blue-500 hover:text-blue-600">
-                           {`답글 ${descendantCount}개 보기`}
+                            {`답글 ${descendantCount}개 보기`}
                         </span>
                     </div>
                 </div>
             )}
             {hasChildren && isExpanded && (
-                 <RecursiveReplies parentId={reply.id} allPostProps={allPostProps} posts={posts} postsWithChildren={postsWithChildren}/>
+                  <RecursiveReplies parentId={reply.id} allPostProps={allPostProps} posts={posts} postsWithChildren={postsWithChildren}/>
             )}
         </div>
     );
@@ -1697,12 +1697,12 @@ const App = () => {
             const targetOriginalId = isSimpleRetweetPost ? targetPost.retweetedPostId : targetPost.id;
             
             if (!targetOriginalId) {
-                 if (isSimpleRetweetPost) {
+                  if (isSimpleRetweetPost) {
                     try {
                         await deleteDoc(doc(db, `/artifacts/${canvasAppId}/public/data/posts`, targetPost.id));
                     } catch(e) { /* silent fail */ }
-                 }
-                 return console.error("액션 대상 원본 게시물을 찾을 수 없습니다.");
+                  }
+                  return console.error("액션 대상 원본 게시물을 찾을 수 없습니다.");
             }
             const postToQuote = posts.find(p => p.id === targetOriginalId);
 
